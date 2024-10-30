@@ -1,18 +1,17 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+// src/users/users.module.ts
 
-export type UserDocument = HydratedDocument<User>;
+import { Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { UsersController } from './users.controller';
+import { UsersService } from './users.service';
+import { User, UserSchema } from './schemas/user.schema';
 
-@Schema()
-export class User {
-  @Prop({ required: true })
-  name: string;
-
-  @Prop({ required: true, unique: true })
-  email: string;
-
-  @Prop({ required: true })
-  password: string;
-}
-
-export const UserSchema = SchemaFactory.createForClass(User);
+@Module({
+  imports: [
+    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+  ],
+  controllers: [UsersController],
+  providers: [UsersService],
+  exports: [UsersService],
+})
+export class UsersModule {}
