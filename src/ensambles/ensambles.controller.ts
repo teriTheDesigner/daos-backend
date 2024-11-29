@@ -17,7 +17,7 @@ export class EnsemblesController {
   constructor(private ensemblesService: EnsemblesService) {}
 
   @UseGuards(AuthGuard)
-  @Post('create')
+  @Post()
   @HttpCode(HttpStatus.CREATED)
   async createEnsemble(@Body() createEnsembleDto: any, @Request() req: any) {
     const user = req.user;
