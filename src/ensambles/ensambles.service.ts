@@ -9,6 +9,9 @@ export class EnsemblesService {
     @InjectModel(Ensemble.name) private ensembleModel: Model<Ensemble>,
   ) {}
 
+  async findAll(): Promise<Ensemble[]> {
+    return await this.ensembleModel.find().exec();
+  }
   async createEnsemble(createEnsembleDto: any, user: any): Promise<Ensemble> {
     const newEnsemble = new this.ensembleModel({
       ...createEnsembleDto,
