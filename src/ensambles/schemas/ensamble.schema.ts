@@ -8,9 +8,6 @@ export class Ensemble extends Document {
 
   @Prop()
   description: string;
-
-  @Prop({ required: true })
-  creator: string;
 }
 
 export const EnsembleSchema = SchemaFactory.createForClass(Ensemble);
