@@ -3,11 +3,20 @@ import { Document } from 'mongoose';
 
 @Schema()
 export class Ensemble extends Document {
-  @Prop({ required: true })
-  name: string;
+  @Prop()
+  title: string;
 
   @Prop()
   description: string;
+
+  @Prop()
+  instrument: string;
+
+  @Prop()
+  city: string;
+
+  @Prop()
+  ensembleName: string;
 }
 
 export const EnsembleSchema = SchemaFactory.createForClass(Ensemble);
