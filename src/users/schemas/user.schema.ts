@@ -14,7 +14,7 @@ export class User {
   @Prop({ required: true })
   password: string;
 
-  _Id: any;
+  _id: any;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'Ensemble' }] })
   ensembles: Types.ObjectId[];

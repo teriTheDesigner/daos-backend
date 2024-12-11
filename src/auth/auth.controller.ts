@@ -29,7 +29,7 @@ export class AuthController {
   async getProfile(@Request() req) {
     const user = await this.usersService.findOne(req.user.name);
     return {
-      id: user._Id,
+      id: user._id,
       name: user.name,
       email: user.email,
       ensembles: user.ensembles,
