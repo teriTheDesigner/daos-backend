@@ -28,9 +28,11 @@ export class AuthController {
   @Get('profile')
   async getProfile(@Request() req) {
     const user = await this.usersService.findOne(req.user.name);
-    return { name: user.name, email: user.email };
+    return {
+      id: user._Id,
+      name: user.name,
+      email: user.email,
+      ensembles: user.ensembles,
+    };
   }
 }
-
-//curl -X POST http://localhost:3000/auth/login -d '{"name": "Patres", "password": "secret"}' -H "Content-Type: application/json"
-//curl http://localhost:3000/auth/profile -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGF0cmVzIiwiaWF0IjoxNzMwNzI3MDE5LCJleHAiOjE3MzA3MjcwNzl9.39kRlqm_TlegnDN-7CDTgLufHzjr_OXv-lPrmVONAfE"
