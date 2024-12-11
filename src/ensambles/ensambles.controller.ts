@@ -7,6 +7,7 @@ import {
   Request,
   HttpCode,
   HttpStatus,
+  Param,
 } from '@nestjs/common';
 import { AuthGuard } from '../auth/auth.guard';
 import { EnsemblesService } from './ensambles.service';
@@ -27,5 +28,13 @@ export class EnsemblesController {
   @Get()
   async findAll(): Promise<Ensemble[]> {
     return this.ensemblesService.findAll();
+  }
+
+  @Post(':id/join')
+  async joinEnsemble(
+    @Param('id') ensembleId: string,
+    @Body('userId') userId: string,
+  ) {
+    return this.ensemblesService.joinEnsemble(userId, ensembleId);
   }
 }
