@@ -37,4 +37,9 @@ export class EnsemblesController {
   ) {
     return this.ensemblesService.joinEnsemble(userId, ensembleId);
   }
+
+  @Get(':id')
+  async findOne(@Param('id') ensembleId: string): Promise<Ensemble> {
+    return this.ensemblesService.findById(ensembleId);
+  }
 }
